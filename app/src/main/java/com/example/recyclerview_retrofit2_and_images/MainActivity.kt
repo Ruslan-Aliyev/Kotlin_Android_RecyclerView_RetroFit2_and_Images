@@ -134,7 +134,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 moviesApi.postMultipart(image, title, year)?.enqueue(
                     object : Callback<ResponseBody?> {
                         override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
-
+                            Log.i(TAG, "error"+t.message)
                         }
                         override fun onResponse( call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
                             Log.i(TAG, response.body().toString())
@@ -196,6 +196,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 )
                 saveImage(bm)
             } catch (e: IOException) {
+                Log.i(TAG, "error")
                 e.printStackTrace()
             }
         }
@@ -239,10 +240,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             } else {
             }
         } catch (e: FileNotFoundException) {
+            Log.i(TAG, "error")
             e.printStackTrace()
         } catch (e: IOException) {
+            Log.i(TAG, "error")
             e.printStackTrace()
         } catch (e: Exception) {
+            Log.i(TAG, "error")
             e.printStackTrace()
         }
 
